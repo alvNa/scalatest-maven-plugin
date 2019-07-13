@@ -29,8 +29,8 @@
     <scala.maven.plugin.version>4.1.0</scala.maven.plugin.version>
     <maven.enforcer.plugin.version>1.4.1</maven.enforcer.plugin.version>
 
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>9</maven.compiler.source>
+    <maven.compiler.target>9</maven.compiler.target>
     <encoding>UTF-8</encoding>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -103,18 +103,6 @@
       <version>${scala.version}</version>
       <scope>test</scope>
     </dependency>
-    <!--<dependency>-->
-      <!--<groupId>junit</groupId>-->
-      <!--<artifactId>junit</artifactId>-->
-      <!--<version>${junit.version}</version>-->
-      <!--<scope>test</scope>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-      <!--<groupId>org.junit.jupiter</groupId>-->
-      <!--<artifactId>junit-jupiter-api</artifactId>-->
-      <!--<version>${junit.version}</version>-->
-      <!--<scope>test</scope>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
