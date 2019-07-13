@@ -16,10 +16,10 @@
   <description>Integrates ScalaTest into Maven</description>
 
   <properties>
-    <scala.major.version>2.11</scala.major.version>
-    <scala.minor.version>12</scala.minor.version>
-    <scala.version>${scala.major.version}.${scala.minor.version}</scala.version>
-    <scalatest.version>3.0.1</scalatest.version>
+    <!--<scala.major.version>2.11</scala.major.version>-->
+    <!--<scala.minor.version>12</scala.minor.version>-->
+    <!--<scala.version>${scala.major.version}.${scala.minor.version}</scala.version>-->
+    <scalatest.version>3.0.8</scalatest.version>
     <build.timestamp>${maven.build.timestamp}</build.timestamp>
     <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
     <maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
@@ -31,13 +31,14 @@
     <scala.maven.plugin.version>4.1.0</scala.maven.plugin.version>
     <maven.enforcer.plugin.version>1.4.1</maven.enforcer.plugin.version>
 
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <encoding>UTF-8</encoding>
+    <scala.version>2.11.8</scala.version>
+    <scala.compat.version>2.11</scala.compat.version>
 
-    <lift.version>3.3.0</lift.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
 
   <licenses>
@@ -96,14 +97,14 @@
     </dependency>
     <dependency>
       <groupId>org.scalatest</groupId>
-      <artifactId>scalatest_${scala.major.version}</artifactId>
+      <artifactId>scalatest_${scala.compat.version}</artifactId>
       <version>${scalatest.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-library</artifactId>
-      <version>${scala.major.version}.${scala.minor.version}</version>
+      <version>${scala.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>

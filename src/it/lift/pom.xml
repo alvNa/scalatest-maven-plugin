@@ -27,17 +27,17 @@
     </dependency>
     <dependency>
       <groupId>net.liftweb</groupId>
-      <artifactId>lift-util_@scala.major.version@</artifactId>
+      <artifactId>lift-util_@scala.compat.version@</artifactId>
       <version>${lift.version}</version>
     </dependency>
     <dependency>
       <groupId>net.liftweb</groupId>
-      <artifactId>lift-webkit_@scala.major.version@</artifactId>
+      <artifactId>lift-webkit_@scala.compat.version@</artifactId>
       <version>${lift.version}</version>
     </dependency>
     <dependency>
       <groupId>net.liftweb</groupId>
-      <artifactId>lift-mapper_@scala.major.version@</artifactId>
+      <artifactId>lift-mapper_@scala.compat.version@</artifactId>
       <version>${lift.version}</version>
     </dependency>
     <dependency>
@@ -48,7 +48,7 @@
     </dependency>
     <dependency>
       <groupId>org.scalatest</groupId>
-      <artifactId>scalatest_@scala.major.version@</artifactId>
+      <artifactId>scalatest_@scala.compat.version@</artifactId>
       <version>@scalatest.version@</version>
       <scope>test</scope>
     </dependency>

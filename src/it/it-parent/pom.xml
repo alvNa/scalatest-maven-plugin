@@ -7,6 +7,10 @@
   <packaging>pom</packaging>
   <name>it-parent</name>
 
+  <properties>
+    <scalatest.maven.plugin.version>2.1.0-SNAPSHOT</scalatest.maven.plugin.version>
+  </properties>
+
   <profiles>
     <profile>
       <id>maven-3</id>
