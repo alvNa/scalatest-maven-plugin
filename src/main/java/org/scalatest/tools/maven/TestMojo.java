@@ -1,14 +1,14 @@
 package org.scalatest.tools.maven;
 
-import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import static org.scalatest.tools.maven.MojoUtils.*;
 
 import java.io.File;
-import java.util.Collections;
-import static java.util.Collections.singletonList;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import static java.util.Collections.singletonList;
+import static org.scalatest.tools.maven.MojoUtils.*;
 
 /**
  * Provides a bridge between Maven and the command-line form of ScalaTest's Runner.
@@ -99,7 +99,7 @@ public class TestMojo extends AbstractScalaTestMojo {
      */
     String stderr;
 
-    public void execute() throws MojoExecutionException, MojoFailureException {
+    public void execute() throws MojoFailureException {
         if (skipTests) {
             getLog().info("Tests are skipped.");
         } else {

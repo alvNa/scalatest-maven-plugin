@@ -2,15 +2,16 @@ package org.scalatest.tools.maven
 
 import java.io.File
 import org.scalatest.Matchers
-import org.scalatest.junit.JUnit3Suite
+import org.scalatestplus.junit.JUnitSuite
 import java.util.ArrayList
 import org.scalatest.BeforeAndAfterAll
+import org.junit.jupiter.api.Test
 
 /**
  * @author Jon -Anders Teigen
  */
 final class PluginTest
-    extends JUnit3Suite
+    extends JUnitSuite
     with BeforeAndAfterAll
     with Matchers
     with PluginMatchers {
@@ -46,6 +47,7 @@ final class PluginTest
     mojo.configuration
   }
 
+  @Test
   def testDefault {
     val config = configure(_ => ())
     config should contain("-o")
@@ -53,22 +55,26 @@ final class PluginTest
     config should have length (3)
   }
 
+  @Test
   def testConfigs {
     val config = configure(_.config = comma("foo=bar", "monkey=donkey"))
     config should contain("-Dfoo=bar")
     config should contain("-Dmonkey=donkey")
   }
 
+  @Test
   def testRunpath {
     configure(_.runpath = comma("http://foo.com/my.jar", "/some/where")) should containCompoundArgs("-R", outputDirectory, testOutputDirectory, "http://foo.com/my.jar", "/some/where")
   }
 
+  @Test
   def testFilereporters {
     val config = configure(_.filereports = comma("foo.txt", "YZT some.txt"))
     config should containSlice("-f", new File(reportsDirectory, "foo.txt").getAbsolutePath)
     config should containSlice("-fYZT", new File(reportsDirectory, "some.txt").getAbsolutePath)
   }
 
+  @Test
   def testHtmlreporters {
     val config = configure(_.htmlreporters =
       comma("target/htmldir", "target/myhtmldir src/resources/my.css"))
@@ -78,39 +84,47 @@ final class PluginTest
                                "-Y", "src/resources/my.css")
   }
 
+  @Test
   def testReporters {
     val config = configure(_.reporters = comma("YZT org.my.reporter", "org.your.reporter"))
     config should containSlice("-CYZT", "org.my.reporter")
     config should containSlice("-C", "org.your.reporter")
   }
 
+  @Test
   def testJUnitXmlReporters {
     val config = configure(_.junitxml = comma("some/foo.xml", "XYZ other.xml"))
     config should containSlice("-u", new File(reportsDirectory, "some/foo.xml").getAbsolutePath)
     config should containSlice("-uXYZ", new File(reportsDirectory, "other.xml").getAbsolutePath)
   }
 
+  @Test
   def testStdOutReporter {
     configure(_.stdout = "GUP") should contain("-oGUP")
   }
 
+  @Test
   def testStdErrReporter {
     configure(_.stderr = "BIS") should contain("-eBIS")
   }
 
+  @Test
   def testIncludes {
     configure(_.tagsToInclude = comma("a", "b", "c")) should containCompoundArgs("-n", "a", "b", "c")
   }
 
+  @Test
   def testExcludes {
     configure(_.tagsToExclude = comma("a", "b", "c")) should containCompoundArgs("-l", "a", "b", "c")
   }
 
+  @Test
   def testConcurrent {
     configure(_.parallel = true) should contain("-P")
     configure(_.parallel = false) should not contain ("-P")
   }
 
+  @Test
   def testSuites {
     val suites: String = comma(" a ",
                                "b",
@@ -125,6 +139,7 @@ final class PluginTest
     config should containSlice ("-s", "zowie", "-z", "zip zap")
   }
 
+  @Test
   def testSuitesAndTests {
     val suites: String = comma(" a ", "b c")
     val tests:  String = comma(" d ", "@e")
@@ -137,6 +152,7 @@ final class PluginTest
                                 "-s", "b", "-z", "c")
   }
 
+  @Test
   def testTests {
     val tests: String= comma(" @a ", " b ", "@c")
 
@@ -151,6 +167,7 @@ final class PluginTest
   // Verify that a comma can be escaped with a backslash in order to
   // support a test name that contains a comma.
   //
+  @Test
   def testTestsWithCommas {
     configure(_.tests = comma("a\\, bc", "b", "c")) should containSuiteArgs("-z", "a, bc", "b", "c")
   }

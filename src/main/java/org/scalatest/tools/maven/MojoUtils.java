@@ -1,9 +1,8 @@
 package org.scalatest.tools.maven;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Provides internal utilities for the Mojo's operations.
@@ -14,8 +13,8 @@ final class MojoUtils {
     private MojoUtils() {
     }
 
-    static interface F {
-        public String f(String in);
+    interface F {
+        String f(String in);
     }
 
     static F passThrough = new F() {

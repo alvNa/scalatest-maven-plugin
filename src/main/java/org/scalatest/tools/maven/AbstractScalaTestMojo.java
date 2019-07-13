@@ -2,31 +2,20 @@ package org.scalatest.tools.maven;
 
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
-import org.codehaus.plexus.util.cli.CommandLineException;
-import org.codehaus.plexus.util.cli.CommandLineTimeOutException;
-import org.codehaus.plexus.util.cli.CommandLineUtils;
-import org.codehaus.plexus.util.cli.Commandline;
-import org.codehaus.plexus.util.cli.StreamConsumer;
+import org.codehaus.plexus.util.cli.*;
 
-import static org.scalatest.tools.maven.MojoUtils.*;
-
-import java.io.*;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-
-import static java.util.Collections.singletonList;
-
-import java.net.MalformedURLException;
-import java.net.URLClassLoader;
-import java.net.URL;
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.*;
+
+import static java.util.Collections.singletonList;
+import static org.scalatest.tools.maven.MojoUtils.*;
 
 /**
  * Provides the base for all mojos.
@@ -386,7 +375,7 @@ abstract class AbstractScalaTestMojo extends AbstractMojo {
     // for ReporterMojos in maven-2.2 (it does work in maven-3)
     private List<String> testClasspathElements() {
         try {
-            return (List<String>) project.getTestClasspathElements();
+            return project.getTestClasspathElements();
         }
         catch (DependencyResolutionRequiredException e) {
             // There's really no known way this exception can happen since

@@ -1,10 +1,9 @@
 package org.scalatest.tools.maven;
 
-import org.codehaus.doxia.sink.Sink;
-import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.reporting.MavenReport;
 import org.apache.maven.reporting.MavenReportException;
+import org.codehaus.doxia.sink.Sink;
 
 import java.io.*;
 import java.util.List;
@@ -41,7 +40,7 @@ public class ReporterMojo extends AbstractScalaTestMojo implements MavenReport {
      */
     private String fileReporterOptions;
 
-    public void execute() throws MojoExecutionException, MojoFailureException {
+    public void execute(){
         // no op, Maven doesn't even call this method but I have to implement it because it's on the interface.
     }
 
