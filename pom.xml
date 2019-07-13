@@ -16,9 +16,8 @@
   <description>Integrates ScalaTest into Maven</description>
 
   <properties>
-    <!--<scala.major.version>2.11</scala.major.version>-->
-    <!--<scala.minor.version>12</scala.minor.version>-->
-    <!--<scala.version>${scala.major.version}.${scala.minor.version}</scala.version>-->
+    <scala.version>2.12.8</scala.version>
+    <scala.compat.version>2.12</scala.compat.version>
     <scalatest.version>3.0.8</scalatest.version>
     <build.timestamp>${maven.build.timestamp}</build.timestamp>
     <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
@@ -34,8 +33,6 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <encoding>UTF-8</encoding>
-    <scala.version>2.11.8</scala.version>
-    <scala.compat.version>2.11</scala.compat.version>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
