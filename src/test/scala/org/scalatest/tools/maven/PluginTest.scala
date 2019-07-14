@@ -172,47 +172,58 @@ final class PluginTest
     configure(_.tests = comma("a\\, bc", "b", "c")) should containSuiteArgs("-z", "a, bc", "b", "c")
   }
 
+  @Test
   def testSuffixes {
     configure(_.suffixes = "(?<!Integration)(Test|Spec|Suite)") should containSuiteArgs("-q", "(?<!Integration)(Test|Spec|Suite)")
   }
 
+  @Test
   def testMembers {
     configure(_.membersOnlySuites = comma("a", "b", "c")) should containSuiteArgs("-m", "a", "b", "c")
   }
 
+  @Test
   def testWildcards {
     configure(_.wildcardSuites = comma("a", "b", "c")) should containSuiteArgs("-w", "a", "b", "c")
   }
 
+  @Test
   def testTestNGs {
     configure(_.testNGConfigFiles = comma("a", "b", "c")) should containSuiteArgs("-b", "a", "b", "c")
   }
 
+  @Test
   def testJUnits {
     configure(_.jUnitClasses = comma("a", "b", "c")) should containSuiteArgs("-j", "a", "b", "c")
   }
 
+  @Test
   def testMemoryFiles {
     configure(_.memoryFiles = comma("a", "b", "c")) should containSuiteArgs("-M", "a", "b", "c")
   }
 
+  @Test
   def testTestsFiles {
     configure(_.testsFiles = comma("nonesuch", "pom.xml", "src")) should containSuiteArgs("-A", "pom.xml", "src")
   }
 
+  @Test
   def testScaledTimeSpans {
     configure(_.spanScaleFactor = 2.5) should containSlice("-F", "2.5")
   }
 
+  @Test
   def testMojoConcat {
     MojoUtils.concat(jlist("a", "b", "c"), jlist("1", "2", "3")) should be(Array("a", "b", "c", "1", "2", "3"))
   }
 
+  @Test
   def testMojoSuiteArg {
     MojoUtils.suiteArg("-a", comma("a", "b", "c")) should be(jlist("-a", "a", "-a", "b", "-a", "c"))
     MojoUtils.suiteArg("-a", null) should be(jlist())
   }
 
+  @Test
   def testMojoCompundArg {
     MojoUtils.compoundArg("-a", comma("a", "b", "c")) should be(jlist("-a", "a b c"))
     MojoUtils.compoundArg("-a", null.asInstanceOf[String]) should be(jlist())

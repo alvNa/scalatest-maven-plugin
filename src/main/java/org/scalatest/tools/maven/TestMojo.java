@@ -47,22 +47,22 @@ public class TestMojo extends AbstractScalaTestMojo {
      * Comma separated list of filereporters. A filereporter consists of an optional
      * configuration and a mandatory filename, separated by a whitespace. E.g <code>all.txt,XE ignored_and_pending.txt</code>
      * For more info on configuring reporters, see the scalatest documentation.
-     * @parameter property="filereports"
+     * @parameter property="fileReports"
      */
     String filereports;
 
     /**
-     * Comma separated list of htmlreporters.  An htmlreporter
+     * Comma separated list of htmlReporters.  An htmlreporter
      * consists of a mandatory directory and an optional css file
      * name, separated by whitespace. E.g:
      * <code>
-     *   &lt;htmlreporters&gt;
+     *   &lt;htmlReporters&gt;
      *     target/htmldir,
      *     target/myhtmldir src/my.css
-     *   &lt;/htmlreporters&gt;
+     *   &lt;/htmlReporters&gt;
      * </code>
      * For more info on configuring reporters, see the scalatest documentation.
-     * @parameter property="htmlreporters"
+     * @parameter property="htmlReporters"
      */
     String htmlreporters;
 
@@ -77,10 +77,10 @@ public class TestMojo extends AbstractScalaTestMojo {
     String reporters;
 
     /**
-     * Comma separated list of junitxml. A junitxml consists of an optional configuration
+     * Comma separated list of jUnitXml. A jUnitXml consists of an optional configuration
      * and a mandatory directory for the xml files, separated by whitespace.
      * For more info on configuring reporters, see the scalatest documentation.
-     * @parameter property="junitxml"
+     * @parameter property="jUnitXml"
      */
     String junitxml;
 
@@ -114,10 +114,10 @@ public class TestMojo extends AbstractScalaTestMojo {
                 sharedConfiguration(),
                 stdout(),
                 stderr(),
-                filereports(),
-                htmlreporters(),
+                fileReports(),
+                htmlReporters(),
                 reporters(),
-                junitxml()
+                jUnitXml()
         );
     }
 
@@ -131,11 +131,11 @@ public class TestMojo extends AbstractScalaTestMojo {
         return stderr == null ? Collections.<String>emptyList() : singletonList("-e" + stderr);
     }
 
-    private List<String> filereports() {
+    private List<String> fileReports() {
         return reporterArg("-f", filereports, fileRelativeTo(reportsDirectory));
     }
 
-    private List<String> htmlreporters() {
+    private List<String> htmlReporters() {
         List<String> r = new ArrayList<String>();
 
         for (String arg : splitOnComma(htmlreporters)) {
@@ -158,7 +158,7 @@ public class TestMojo extends AbstractScalaTestMojo {
         return reporterArg("-C", reporters, passThrough);
     }
 
-    private List<String> junitxml(){
+    private List<String> jUnitXml(){
         return reporterArg("-u", junitxml, dirRelativeTo(reportsDirectory));
     }
 }

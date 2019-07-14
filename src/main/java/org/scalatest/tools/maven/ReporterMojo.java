@@ -106,7 +106,7 @@ public class ReporterMojo extends AbstractScalaTestMojo implements MavenReport {
         BufferedReader reader = new BufferedReader(new FileReader(outputFile));
 
         try {
-            String line = null;
+            String line;
             while ((line = reader.readLine()) != null) {
                 writer.println(line);
             }
