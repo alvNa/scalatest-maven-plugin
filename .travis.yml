@@ -1,4 +1,7 @@
 language: java
-jdk: oraclejdk8
+jdk: openjdk8
 
-script: "mvn clean install"
+dist: trusty
+
+script: mvn clean install
+
