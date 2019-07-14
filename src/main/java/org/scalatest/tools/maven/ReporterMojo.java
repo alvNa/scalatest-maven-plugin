@@ -3,7 +3,6 @@ package org.scalatest.tools.maven;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.reporting.MavenReport;
 import org.apache.maven.reporting.MavenReportException;
-import org.codehaus.doxia.sink.Sink;
 
 import java.io.*;
 import java.util.List;
@@ -44,7 +43,8 @@ public class ReporterMojo extends AbstractScalaTestMojo implements MavenReport {
         // no op, Maven doesn't even call this method but I have to implement it because it's on the interface.
     }
 
-    public void generate(Sink sink, Locale locale) throws MavenReportException {
+    @Override
+    public void generate(org.codehaus.doxia.sink.Sink sink, Locale locale) throws MavenReportException {
         try {
             runScalaTest(configuration());
         }
